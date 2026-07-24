@@ -492,10 +492,12 @@ button:focus-visible {
   background: rgba(0, 0, 0, 0.55);
   z-index: 98;
   opacity: 0;
+  pointer-events: none; /* invisível não pode capturar clique — corrige botões "mortos" no mobile */
   transition: opacity 0.28s ease;
 }
 .nav-overlay.is-open {
   opacity: 1;
+  pointer-events: auto; /* só intercepta clique quando o menu está de fato aberto */
 }
 
 @media (max-width: 900px) {

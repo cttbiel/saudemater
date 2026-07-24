@@ -46,6 +46,28 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// ---- Rolagem suave para links internos (#top, #beneficios, etc.) ----
+// O #top aponta pra <nav>, que é position:fixed — como ele já está sempre
+// visível no topo da tela, o navegador não rola nada sozinho. Por isso
+// tratamos esse caso à parte, forçando scrollTo(0,0).
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  const hash = link.getAttribute("href");
+  if (!hash || hash === "#") return;
+
+  link.addEventListener("click", (e) => {
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    e.preventDefault();
+
+    if (hash === "#top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
+
 // ---- Reveal on scroll ----
 const revealEls = document.querySelectorAll(".reveal");
 const io = new IntersectionObserver(
