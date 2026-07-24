@@ -1,24 +1,52 @@
-// ============ SAÚDE MATER — script.js (prévia) ============
+// ============ SAÚDE MATER — script.js ============
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Menu mobile
+// ---- Menu mobile ----
 const toggle = document.getElementById("nav-toggle");
 const links = document.getElementById("nav-links");
-toggle.addEventListener("click", () => {
-  const isOpen = links.classList.toggle("is-open");
-  toggle.classList.toggle("is-open", isOpen);
-  toggle.setAttribute("aria-expanded", isOpen);
-});
-links.querySelectorAll("a").forEach((a) =>
-  a.addEventListener("click", () => {
-    links.classList.remove("is-open");
-    toggle.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-  }),
-);
+const overlay = document.getElementById("nav-overlay");
 
-// Reveal on scroll
+function openMenu() {
+  links.classList.add("is-open");
+  toggle.classList.add("is-open");
+  overlay.classList.add("is-open");
+  toggle.setAttribute("aria-expanded", "true");
+  toggle.setAttribute("aria-label", "Fechar menu");
+  document.body.classList.add("menu-open");
+}
+
+function closeMenu() {
+  links.classList.remove("is-open");
+  toggle.classList.remove("is-open");
+  overlay.classList.remove("is-open");
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.setAttribute("aria-label", "Abrir menu");
+  document.body.classList.remove("menu-open");
+}
+
+toggle.addEventListener("click", () => {
+  const isOpen = links.classList.contains("is-open");
+  isOpen ? closeMenu() : openMenu();
+});
+
+// Fecha ao clicar no overlay
+overlay.addEventListener("click", closeMenu);
+
+// Fecha ao clicar em um link de navegação
+links
+  .querySelectorAll("a")
+  .forEach((a) => a.addEventListener("click", closeMenu));
+
+// Fecha ao pressionar Escape
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && links.classList.contains("is-open")) {
+    closeMenu();
+    toggle.focus();
+  }
+});
+
+// ---- Reveal on scroll ----
 const revealEls = document.querySelectorAll(".reveal");
 const io = new IntersectionObserver(
   (entries) => {
@@ -29,6 +57,6 @@ const io = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.12 },
+  { threshold: 0.1 },
 );
 revealEls.forEach((el) => io.observe(el));
