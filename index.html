@@ -25,15 +25,54 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
+  <!-- ============ OPEN GRAPH / WHATSAPP / SEO ============ -->
+  <meta
+    property="og:title"
+    content="Saúde Mater | Cartão de Benefícios em Saúde"
+  />
+  <meta
+    property="og:description"
+    content="Consultas e exames com até 70% de desconto na Mater Med, em Belo Horizonte. Sem carência, sem burocracia."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://saudemater.com.br/" />
+  <meta
+    property="og:image"
+    content="https://saudemater.com.br/assets/logohorizontal.png"
+  />
+
+  <!-- ============ GOOGLE TAG MANAGER (Head) ============ -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-XXXXXXX"); //Substitua 'GTM-XXXXXXX' pelo ID real do container.
+  </script>
   <body>
+    <!-- ============ GOOGLE TAG MANAGER (Body) ============ -->
+    <!-- Substitua 'GTM-XXXXXXX' pelo ID real do container -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+
     <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- ============ NAV ============ -->
     <nav class="nav" id="top">
       <div class="container nav-inner">
         <a href="#top" class="logo-link">
           <img
-            src="assets/logo horizontal.png"
+            src="assets/logohorizontal.png"
             alt="Saúde Mater, Cartão de Benefícios em Saúde"
             class="logo-img"
           />
@@ -454,7 +493,7 @@
                 <div class="carousel-slide">
                   <div class="gallery-card">
                     <img
-                      src="assets/exames/ressonancia magnetica.jpg"
+                      src="assets/exames/ressonanciamagnetica.jpg"
                       alt="Ressonância magnética em BH com desconto"
                       loading="lazy"
                     />
@@ -723,7 +762,7 @@
                   </div>
                   <div class="partner-focus-card">
                     <img
-                      src="assets/parceiros/central card.png"
+                      src="assets/parceiros/centralcard.png"
                       alt="Central Card"
                       loading="lazy"
                     />
@@ -751,14 +790,14 @@
                   </div>
                   <div class="partner-focus-card">
                     <img
-                      src="assets/parceiros/grupo zelo.png"
+                      src="assets/parceiros/zelo.png"
                       alt="Grupo Zelo"
                       loading="lazy"
                     />
                   </div>
                   <div class="partner-focus-card">
                     <img
-                      src="assets/parceiros/laboratorio tamarra.png"
+                      src="assets/parceiros/tamarra.png"
                       alt="Laboratório Tamarra"
                       loading="lazy"
                     />
@@ -1167,7 +1206,7 @@
       <div class="container footer-inner">
         <div class="footer-brand">
           <img
-            src="assets/logo horizontal.png"
+            src="assets/logohorizontal.png"
             alt="Saúde Mater"
             class="footer-logo"
           />
