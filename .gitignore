@@ -1,0 +1,15 @@
+# Pasta de backups locais — não envia ao GitHub
+Backup/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Logs
+*.log
