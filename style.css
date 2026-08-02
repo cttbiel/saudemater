@@ -191,10 +191,18 @@ button:focus-visible {
   align-items: center;
   justify-content: space-between;
 }
+.logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+}
 .logo-img {
-  height: 72px;
+  height: 54px;
   width: auto;
   object-fit: contain;
+  display: block;
+  margin-block: auto;
 }
 .nav-links {
   display: flex;
@@ -499,12 +507,12 @@ button:focus-visible {
 }
 .carousel-viewport {
   overflow: hidden;
-  border-radius: 16px;
+  /* Sem border-radius no viewport para evitar artefato de linha */
 }
 .carousel-track {
   display: flex;
   gap: 1.1rem;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 .carousel-slide {
@@ -517,18 +525,28 @@ button:focus-visible {
   overflow: hidden;
   aspect-ratio: 4 / 5;
   background: var(--navy-light);
+  /* Force GPU layer — elimina artefato de linha em border-radius + overflow */
+  transform: translateZ(0);
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 .gallery-card img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.4s ease;
+  /* Renderização suave, sem artefatos de subpixel */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
-.gallery-card:hover img { transform: scale(1.06); }
+.gallery-card:hover img { transform: scale(1.06) translateZ(0); }
 .gallery-card::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(28,27,77,0.92) 0%, rgba(28,27,77,0.3) 45%, rgba(28,27,77,0) 70%);
+  pointer-events: none;
 }
 .gallery-label {
   position: absolute;
@@ -565,22 +583,37 @@ button:focus-visible {
   stroke: var(--white);
 }
 .carousel-btn:hover svg { stroke: var(--navy); }
+/* Carousel controls — dots apenas (1 por slide/imagem) */
+.carousel-controls--dots-only {
+  justify-content: center;
+  gap: 0;
+  margin-top: 1.5rem;
+}
 .carousel-dots {
   display: flex;
-  gap: 0.45rem;
   align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 .carousel-dot {
-  width: 8px; height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.25);
   border: none;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.carousel-dot:hover {
+  background: var(--orange);
+  opacity: 0.8;
 }
 .carousel-dot.is-active {
-  background: var(--gold);
-  transform: scale(1.3);
+  width: 22px;
+  border-radius: 10px;
+  background: var(--orange);
 }
 
 /* ============ WHY GRID ============ */
@@ -607,72 +640,169 @@ button:focus-visible {
 .why-title { font-weight: 800; font-size: 1rem; color: var(--ink); }
 .why-copy { margin-top: 0.55rem; font-size: 0.88rem; color: var(--muted); }
 
-/* ============ PARTNERS CAROUSEL ============ */
-.partners-carousel {
-  margin-top: 2.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.partners-viewport {
-  flex: 1;
+/* ============ FOCUS CAROUSEL — PARCEIROS (Saúde Mater Brand Palette) ============ */
+
+.section--partners {
   overflow: hidden;
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
 }
-.partners-track {
-  display: flex;
-  gap: 1.5rem;
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   align-items: center;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
 }
-.partner-logo {
-  flex: 0 0 calc(16.666% - 1.25rem);
+
+@media (max-width: 899px) {
+  .partners-grid {
+    text-align: center;
+    gap: 1.75rem;
+  }
+  .partners-content {
+    align-items: center;
+  }
+}
+
+@media (min-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 340px 1fr;
+    gap: 2.5rem;
+    text-align: left;
+  }
+  .partners-content {
+    align-items: flex-start;
+  }
+}
+
+.partners-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.partners-content .section-title {
+  max-width: 100%;
+}
+
+.partners-content .section-lede {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.partners-carousel-col {
+  width: 100%;
+  min-width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Viewport dimensionada para exibir EXATAMENTE 3 parceiros (Esquerda, Centro/Foco, Direita) */
+.partners-focus-wrap {
+  margin-top: 0;
+  overflow: hidden;
+  padding: 0.85rem 0 1.25rem;
+  cursor: grab;
+  user-select: none;
+  width: 100%;
+  max-width: 480px; /* 3 cards compactos no Desktop */
+}
+.partners-focus-wrap:active { cursor: grabbing; }
+
+.partners-focus-track {
+  display: flex;
+  gap: 1rem;
+  will-change: transform;
+  align-items: center;
+}
+
+/* Card individual — Desktop */
+.partner-focus-card {
+  flex: 0 0 145px;
+  height: 92px;
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--white);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 12px;
-  padding: 0.85rem 1rem;
-  min-height: 72px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  padding: 0.6rem 0.8rem;
+  opacity: 0.45;
+  transform: scale(0.88);
+  transition: opacity 0.35s ease, transform 0.35s ease,
+    box-shadow 0.35s ease, border-color 0.35s ease;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(28, 27, 77, 0.04);
 }
-.partner-logo:hover {
-  border-color: var(--gold);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-  transform: translateY(-2px);
+
+/* Card individual — Mobile Ultra Compacto (82x60px, extremamente discreto) */
+@media (max-width: 600px) {
+  .partners-focus-wrap {
+    max-width: 268px; /* 3 cards ultra compactos de 82px + 2 gaps de 8px */
+    padding: 0.5rem 0 0.85rem;
+  }
+  .partners-focus-track {
+    gap: 0.5rem;
+  }
+  .partner-focus-card {
+    flex: 0 0 82px;
+    height: 60px;
+    border-radius: 10px;
+    padding: 0.3rem 0.4rem;
+  }
 }
-.partner-logo img {
-  max-height: 44px;
+
+/* Estado ATIVO (Centro exacto): Destaque Laranja Saúde Mater */
+.partner-focus-card.is-active {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 8px 22px rgba(242, 117, 30, 0.24);
+  border-color: var(--orange);
+  z-index: 2;
+}
+
+/* Imagem/Logo dentro do card: preenchimento máximo nítido e proporcional */
+.partner-focus-card img {
+  max-height: 85%;
+  max-width: 90%;
   width: auto;
+  height: auto;
   object-fit: contain;
   display: block;
 }
-.partners-btn {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid var(--line-on-navy);
-  flex-shrink: 0;
-}
-.partners-btn:hover {
-  background: var(--gold);
-  border-color: var(--gold);
+
+/* Indicadores de Bolinhas dos Parceiros (Cores Oficiais: Navy + Laranja) */
+.partners-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
-/* Parceiros no fundo bege */
-.partners-btn--light {
-  background: var(--white);
-  border: 1px solid var(--line);
-  box-shadow: 0 2px 8px rgba(28,27,77,0.08);
+.partners-dots .carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(28, 27, 77, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.partners-btn--light svg {
-  stroke: var(--navy);
+
+.partners-dots .carousel-dot:hover {
+  background: var(--orange);
+  opacity: 0.7;
 }
-.partners-btn--light:hover {
-  background: var(--navy);
-  border-color: var(--navy);
-}
-.partners-btn--light:hover svg {
-  stroke: var(--white);
+
+.partners-dots .carousel-dot.is-active {
+  width: 22px;
+  border-radius: 10px;
+  background: var(--orange);
 }
 
 /* ============ FAQ — NAVY VERSION ============ */
@@ -894,18 +1024,18 @@ button:focus-visible {
 .channel svg { width: 22px; height: 22px; stroke: var(--gold); flex-shrink: 0; }
 .channel-label { font-weight: 700; font-size: 0.93rem; color: var(--white); }
 
-/* ============ LOCATION ============ */
+/* location-block usa flex para o map preencher a altura */
 .location-block {
   margin-top: 2.5rem;
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 0;
+  display: flex;
+  align-items: stretch;
   border: 1px solid var(--line-on-navy);
   border-radius: 20px;
   overflow: hidden;
   min-height: 280px;
 }
 .location-info {
+  flex: 0 0 300px;
   padding: 2rem;
   background: var(--navy-light);
   display: flex;
@@ -927,11 +1057,23 @@ button:focus-visible {
   line-height: 1.7;
 }
 .location-address strong { color: var(--white); display: block; margin-bottom: 0.25rem; }
-.location-map { height: 280px; }
-.location-map iframe { display: block; width: 100%; height: 100%; border: 0; }
+.location-map {
+  /* Garante que o iframe preenche TODA a área do container */
+  position: relative;
+  min-height: 280px;
+  flex: 1;
+}
+.location-map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
 
 /* ============ FOOTER ============ */
-.footer { background: var(--navy); padding-block: 2.5rem 1.5rem; }
+.footer { background: var(--navy); padding-block: 2.25rem 1.75rem; }
 .footer-inner {
   display: flex;
   justify-content: space-between;
@@ -941,30 +1083,15 @@ button:focus-visible {
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--line-on-navy);
 }
-.footer-brand { display: flex; align-items: center; gap: 0.75rem; }
-.footer-logo { height: 38px; width: auto; object-fit: contain; }
-.footer-tagline { font-weight: 800; font-size: 0.9rem; color: var(--gold); }
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-}
-.footer-links a {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--muted-on-navy);
-  transition: color 0.2s ease;
-}
-.footer-links a:hover { color: var(--gold); }
-.footer-copy { font-size: 0.82rem; color: var(--muted-on-navy); }
-.footer-disclaimer {
-  margin-top: 1.25rem;
-}
+.footer-brand { display: flex; align-items: center; gap: 1rem; }
+.footer-logo { height: 52px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2)); }
+.footer-copy { font-size: 0.85rem; color: var(--muted-on-navy); }
+.footer-disclaimer { margin-top: 1.25rem; }
 .footer-disclaimer p {
-  font-size: 0.75rem;
-  color: rgba(185, 184, 222, 0.55);
+  font-size: 0.78rem;
+  color: rgba(185, 184, 222, 0.65);
   line-height: 1.6;
-  max-width: 80ch;
+  max-width: 85ch;
 }
 
 /* ============ WHATSAPP FLUTUANTE ============ */
@@ -1076,6 +1203,8 @@ button:focus-visible {
   /* Hero — tablet: mostra bust via JS (ver script.js) */
   .hero-inner { grid-template-columns: 1fr 260px; gap: 1.5rem; }
   .hero-chamada { max-width: 280px; }
+  /* Partners: tablet — card ligeiramente maior */
+  .partner-focus-card { flex: 0 0 58%; }
 
   /* Grids */
   .steps-grid { grid-template-columns: 1fr; }
@@ -1115,6 +1244,10 @@ button:focus-visible {
   .hero-fact { padding-inline: 0.5rem; }
   .hero-fact-value { font-size: 1.1rem; }
   .hero-fact-label { font-size: 0.68rem; }
+  /* Location mobile */
+  .location-block { flex-direction: column; }
+  .location-info { flex: none; }
+  .location-map { min-height: 220px; }
 }
 
 @media (max-width: 560px) {
