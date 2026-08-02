@@ -2,6 +2,56 @@
    SAÚDE MATER — style.css
    Paleta: Navy #1C1B4D / Dourado #E3A639 / Laranja #F2751E
    ============================================================ */
+/* ============================================================
+   FONTS (SELF-HOSTED LOCAL NUNITO WOFF2)
+   ============================================================ */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/nunito-v32-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/nunito-v32-latin-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/nunito-v32-latin-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/fonts/nunito-v32-latin-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("assets/fonts/nunito-v32-latin-800.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/fonts/nunito-v32-latin-900.woff2") format("woff2");
+}
 
 *,
 *::before,
