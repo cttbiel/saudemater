@@ -6,8 +6,8 @@ document.getElementById("year").textContent = new Date().getFullYear();
 (function () {
   const heroImg = document.querySelector(".hero-chamada");
   if (!heroImg) return;
-  const FULL = "assets/chamada.png";
-  const BUST = "assets/chamada-bust.png";
+  const FULL = "assets/chamada.webp";
+  const BUST = "assets/chamada-bust.webp";
   function updateHeroImg() {
     const isTablet = window.innerWidth <= 900 && window.innerWidth > 700;
     heroImg.src = isTablet ? BUST : FULL;
