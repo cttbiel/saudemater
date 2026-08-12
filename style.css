@@ -508,23 +508,113 @@ button:focus-visible {
 .compare-card--on .compare-icon { background: var(--gold); }
 .compare-card--on .compare-icon svg { stroke: var(--navy); }
 
-/* ============ PRICE GRID ============ */
-.price-grid {
+/* ============ PLANS GRID ============ */
+.plans-grid {
   margin-top: 2.5rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
 }
-.price-card {
+.plan-card {
   background: var(--navy-light);
   border: 1px solid var(--line-on-navy);
-  border-radius: 16px;
-  padding: 1.6rem 1.3rem;
-  display: flex; flex-direction: column; gap: 0.35rem;
+  border-radius: 20px;
+  padding: 2rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.price-specialty { font-weight: 800; font-size: 0.98rem; color: var(--white); }
-.price-from { font-size: 0.82rem; color: var(--muted-on-navy); text-decoration: line-through; }
-.price-to { font-weight: 900; font-size: 1.35rem; color: var(--gold); }
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+.plan-card--featured {
+  background: linear-gradient(145deg, #272663 0%, #1c1b4d 100%);
+  border: 2px solid var(--gold);
+  box-shadow: 0 12px 36px rgba(227, 166, 57, 0.22);
+  position: relative;
+}
+.plan-card--featured::before {
+  content: "Mais popular";
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 900;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.9rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.plan-badge {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+}
+.plan-price-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.15rem;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.plan-currency {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--white);
+  padding-bottom: 0.35rem;
+}
+.plan-from-label {
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--muted-on-navy);
+  letter-spacing: 0;
+  padding-bottom: 0;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.plan-value {
+  font-weight: 900;
+  font-size: 3rem;
+  color: var(--white);
+  line-height: 1;
+}
+.plan-cents {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--white);
+  padding-bottom: 0.4rem;
+}
+.plan-period {
+  font-size: 0.82rem;
+  color: var(--muted-on-navy);
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+  display: block;
+}
+.plan-desc {
+  font-size: 0.9rem;
+  color: var(--muted-on-navy);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+.plan-card .btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.92rem;
+  padding: 0.85rem 1.25rem;
+}
 .price-note { margin-top: 1.5rem; font-size: 0.82rem; color: var(--muted-on-navy); font-style: italic; }
 
 /* ============ STEPS ============ */
@@ -811,6 +901,34 @@ button:focus-visible {
   box-shadow: 0 8px 22px rgba(242, 117, 30, 0.24);
   border-color: var(--orange);
   z-index: 2;
+}
+
+/* Clínica Parceira Principal — destaque dourado permanente */
+.partner-focus-card--clinic {
+  border-color: var(--gold);
+  position: relative;
+}
+.partner-focus-card--clinic::after {
+  content: "Clínica Parceira";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--font);
+  font-weight: 900;
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.6rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.partner-focus-card--clinic.is-active {
+  border-color: var(--gold);
+  box-shadow: 0 8px 22px rgba(227, 166, 57, 0.35);
 }
 
 /* Imagem/Logo dentro do card: preenchimento máximo nítido e proporcional */
@@ -1258,7 +1376,7 @@ button:focus-visible {
 
   /* Grids */
   .steps-grid { grid-template-columns: 1fr; }
-  .price-grid { grid-template-columns: repeat(2, 1fr); }
+  .plans-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; }
   .compare-grid { grid-template-columns: 1fr; }
@@ -1301,7 +1419,7 @@ button:focus-visible {
 }
 
 @media (max-width: 560px) {
-  .price-grid { grid-template-columns: 1fr; }
+  .plans-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
   .headline { font-size: clamp(1.75rem, 8vw, 2.4rem); }
   .cta-row { flex-direction: column; }

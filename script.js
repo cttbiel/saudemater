@@ -2,19 +2,14 @@
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// ---- Hero: troca imagem responsiva (desktop = corpo inteiro, tablet = busto) ----
+// ---- Hero: imagem da Mia (PNG sem fundo — mesma para desktop e tablet) ----
 (function () {
   const heroImg = document.querySelector(".hero-chamada");
   if (!heroImg) return;
-  const FULL = "assets/chamada.webp";
-  const BUST = "assets/chamada-bust.webp";
-  function updateHeroImg() {
-    const isTablet = window.innerWidth <= 900 && window.innerWidth > 700;
-    heroImg.src = isTablet ? BUST : FULL;
-    heroImg.style.maxWidth = isTablet ? "280px" : "";
-  }
-  updateHeroImg();
-  window.addEventListener("resize", updateHeroImg);
+  // Mia.png se adapta ao tamanho de exibição via CSS (max-width + object-fit)
+  // Não há versão bust separada; o CSS cuida do recorte em telas menores.
+  heroImg.src = "assets/Mia.png";
+  heroImg.style.maxWidth = "";
 })();
 
 // ---- Menu mobile ----
