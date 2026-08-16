@@ -596,6 +596,8 @@ function createFocusCarousel({
   startAutoplay();
 }
 
+/* createFocusCarousel — parceiros ocultos temporariamente (seção em <template> no HTML).
+   Restaurar descomentando quando o carrossel de parceiros for reativado.
 createFocusCarousel({
   trackId: "track-partners",
   wrapId: "partners-focus-wrap",
@@ -603,3 +605,4 @@ createFocusCarousel({
   autoplayMs: 4000,
   transitionMs: 520,
 });
+*/
