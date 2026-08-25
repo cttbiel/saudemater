@@ -153,12 +153,6 @@
       <header class="hero">
         <div class="container hero-inner reveal">
           <div class="hero-text">
-            <div class="hero-social-proof">
-              <div class="hero-stars" aria-label="5 estrelas">★★★★★</div>
-              <span class="hero-social-label"
-                >Mais de 2.000 famílias atendidas em Belo Horizonte</span
-              >
-            </div>
             <span class="eyebrow"
               >CARTÃO DE BENEFÍCIOS EM BH · SAÚDE MATER</span
             >
@@ -168,7 +162,7 @@
             </h1>
             <p class="lede">
               Consulta médica de qualidade não precisa ser sinônimo de fila
-              longa e preço salgado. Com o cartão Saúde Mater, você agenda
+              longa e alto custo. Com o cartão Saúde Mater, você agenda
               rápido, é atendido com atenção e paga bem menos do que no
               particular. Sem carência, sem burocracia.
             </p>
@@ -186,12 +180,12 @@
             <div class="hero-facts">
               <div class="hero-fact">
                 <span class="hero-fact-value">R$29,90</span>
-                <span class="hero-fact-label">plano individual/mês</span>
+                <span class="hero-fact-label">individual/mês</span>
               </div>
               <div class="hero-fact-divider"></div>
               <div class="hero-fact">
-                <span class="hero-fact-value">0</span>
-                <span class="hero-fact-label">dias de carência</span>
+                <span class="hero-fact-value">R$39,90</span>
+                <span class="hero-fact-label">familiar/mês</span>
               </div>
               <div class="hero-fact-divider"></div>
               <div class="hero-fact">
@@ -215,8 +209,7 @@
         <div class="container reveal">
           <span class="eyebrow eyebrow--ink">POR QUE SOMOS DIFERENTES</span>
           <h2 class="section-title">
-            A maioria dos cartões de desconto te manda pra fila dos outros. O
-            nosso não.
+            Saúde Mater — Cuidando de você em BH e Região
           </h2>
           <p class="section-lede">
             Com o Cartão Saúde Mater, você tem acesso facilitado à saúde, com
@@ -594,21 +587,53 @@
                   <div class="gallery-card">
                     <img
                       src="assets/exames/audiologo.webp"
-                      alt="Audiologia em BH com desconto"
+                      alt="Exame de audiometria em BH com desconto"
                       loading="lazy"
                     />
-                    <span class="gallery-label">Audiologia</span>
+                    <span class="gallery-label">Audiometria</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="carousel-controls carousel-controls--dots-only">
+            <div class="carousel-controls">
+              <button
+                class="carousel-btn"
+                id="prev-especialidades"
+                aria-label="Slide anterior"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
               <div
                 class="carousel-dots"
                 id="dots-especialidades"
                 role="tablist"
                 aria-label="Slide indicadores"
               ></div>
+              <button
+                class="carousel-btn"
+                id="next-especialidades"
+                aria-label="Próximo slide"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -956,15 +981,16 @@
 
             <!-- Texto à Esquerda -->
             <div class="clinic-spotlight-text">
-              <span class="eyebrow eyebrow--ink">CLÍNICA PARCEIRA</span>
+              <span class="eyebrow eyebrow--ink">CLÍNICA E HOSPITAL PARCEIROS</span>
               <h2 class="section-title">
                 Atendimento de referência<br />
                 em Belo Horizonte.
               </h2>
               <p class="section-lede">
-                Seu cartão Saúde Mater funciona na Mater Med, uma clínica
-                especializada em saúde acessível, com atendimento humanizado,
-                sem burocracia e sem longas esperas.
+                O Cartão Saúde Mater tem parceria com a Clínica e o Hospital
+                MaterMed, garantindo a você acesso a uma infraestrutura
+                completa de saúde, com agilidade, economia e atendimento
+                humanizado.
               </p>
               <ul class="clinic-features">
                 <li>
@@ -977,11 +1003,11 @@
                 </li>
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
-                  Atendimento com qualidade e atenção individual
+                  Clínica: Rua Padre Rolim, 700, Santa Efigênia
                 </li>
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
-                  Santa Efigênia, Belo Horizonte, MG
+                  Hospital: Rua Padre Rolim, 415, Santa Efigênia
                 </li>
               </ul>
               <img
@@ -996,7 +1022,7 @@
             <div class="clinic-spotlight-img">
               <img
                 src="assets/parceiros/fachadamatermed.png"
-                alt="Fachada da Mater Med em Belo Horizonte, clínica parceira do Cartão Saúde Mater"
+                alt="Fachada do Hospital Mater Med em Belo Horizonte, parceiro do Cartão Saúde Mater"
                 loading="lazy"
               />
             </div>
@@ -1084,7 +1110,7 @@
                 class="faq-question faq-question--cream"
                 aria-expanded="false"
               >
-                Onde fica a Saúde Mater? O atendimento pode ser feito online?
+                O atendimento e agendamento podem ser feitos de forma online?
                 <span
                   class="faq-icon faq-icon--cream"
                   aria-hidden="true"
@@ -1092,10 +1118,10 @@
               </button>
               <div class="faq-answer faq-answer--cream" hidden>
                 <p>
-                  A Saúde Mater fica na Rua Padre Rolim, 700, Santa Efigênia,
-                  Belo Horizonte, MG. E sim! O agendamento pode ser realizado de
-                  forma online, pelo WhatsApp ou telefone. É prático, rápido e
-                  sem burocracia.
+                  Sim! Todo o processo de adesão ao cartão e agendamento de
+                  consultas ou exames pode ser realizado de forma 100% online,
+                  diretamente pelo WhatsApp ou telefone. É prático, rápido e sem
+                  burocracia.
                 </p>
               </div>
             </div>
@@ -1116,7 +1142,7 @@
                   A Saúde Mater oferece diversas especialidades médicas,
                   incluindo cardiologia, ginecologia, neurologia,
                   endocrinologia, oftalmologia, proctologia, odontologia,
-                  audiologia, exames laboratoriais, ultrassom, raio-X,
+                  audiometria, exames laboratoriais, ultrassom, raio-X,
                   ressonância magnética, mamografia, colonoscopia e muito mais.
                   Entre em contato para conferir a lista completa e
                   disponibilidade por período.
