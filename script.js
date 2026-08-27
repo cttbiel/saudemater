@@ -2,13 +2,35 @@
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// ---- Hero: imagem da Mia (PNG sem fundo — mesma para desktop e tablet) ----
+// ---- WhatsApp Float: Controle dinâmico de visibilidade ----
+// Enquanto o botão de WhatsApp da Jak / Hero estiver visível na tela, o botão flutuante fica oculto.
+// Quando o usuário rola para baixo (sai da dobra do hero), o botão flutuante aparece suavemente.
+(function initWhatsAppFloatVisibility() {
+  const floatBtn = document.querySelector(".whatsapp-float");
+  const heroSection = document.getElementById("hero-sentinel") || document.querySelector(".hero");
+  if (!floatBtn || !heroSection) return;
+
+  function checkVisibility() {
+    const rect = heroSection.getBoundingClientRect();
+    const isHeroActive = rect.bottom > 100;
+    if (isHeroActive) {
+      floatBtn.classList.remove("is-visible");
+    } else {
+      floatBtn.classList.add("is-visible");
+    }
+  }
+
+  window.addEventListener("scroll", checkVisibility, { passive: true });
+  window.addEventListener("resize", checkVisibility, { passive: true });
+  // Verificação inicial
+  checkVisibility();
+})();
+
+// ---- Hero: imagem da Jak (WebP sem fundo) ----
 (function () {
   const heroImg = document.querySelector(".hero-chamada");
   if (!heroImg) return;
-  // Mia.png se adapta ao tamanho de exibição via CSS (max-width + object-fit)
-  // Não há versão bust separada; o CSS cuida do recorte em telas menores.
-  heroImg.src = "assets/Mia.png";
+  heroImg.src = "assets/Jak.webp";
   heroImg.style.maxWidth = "";
 })();
 

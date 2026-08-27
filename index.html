@@ -14,10 +14,56 @@
       name="keywords"
       content="cartão de saúde belo horizonte, consulta barata BH, desconto consulta médica BH, plano de saúde alternativo BH, cartão benefícios saúde BH, consulta com desconto belo horizonte, saúde mater"
     />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#1C1B4D" />
+    <link rel="canonical" href="https://saudemater.com.br/" />
     <link rel="icon" type="image/x-icon" href="assets/logo-coracao.ico" />
     <link rel="apple-touch-icon" href="assets/logo-coracao.ico" />
-    <!-- Preload das fontes WOFF2 locais essenciais para renderização instantânea (sem FOUT) -->
+
+    <!-- ============ OPEN GRAPH / SOCIAL / SEO ============ -->
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Saúde Mater | Cartão de Benefícios em Saúde em BH"
+    />
+    <meta
+      property="og:description"
+      content="Consultas e exames com preços muito mais acessíveis em Belo Horizonte. Planos a partir de R$ 29,90/mês, sem carência e sem burocracia."
+    />
+    <meta property="og:url" content="https://saudemater.com.br/" />
+    <meta property="og:site_name" content="Saúde Mater" />
+    <meta
+      property="og:image"
+      content="https://saudemater.com.br/assets/logohorizontal.webp"
+    />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="165" />
+    <meta property="og:image:alt" content="Logotipo Saúde Mater" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Saúde Mater | Cartão de Benefícios em Saúde"
+    />
+    <meta
+      name="twitter:description"
+      content="Consultas e exames acessíveis em BH. Sem carência e sem burocracia."
+    />
+    <meta
+      name="twitter:image"
+      content="https://saudemater.com.br/assets/logohorizontal.webp"
+    />
+
+    <!-- Preload LCP Hero Image e Fontes WOFF2 locais para renderização instantânea (sem FOUT/CLS) -->
+    <link
+      rel="preload"
+      href="assets/Jak.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high"
+    />
     <link
       rel="preload"
       href="assets/fonts/nunito-v32-latin-regular.woff2"
@@ -32,37 +78,51 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <!-- ============ OPEN GRAPH / WHATSAPP / SEO ============ -->
-  <meta
-    property="og:title"
-    content="Saúde Mater | Cartão de Benefícios em Saúde"
-  />
-  <meta
-    property="og:description"
-    content="Consultas e exames com preços muito mais acessíveis em Belo Horizonte. Planos a partir de R$ 29,90/mês, sem carência e sem burocracia."
-  />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://saudemater.com.br/" />
-  <meta
-    property="og:image"
-    content="https://saudemater.com.br/assets/logohorizontal.webp"
-  />
 
-  <!-- ============ GOOGLE TAG MANAGER (Head) ============ -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
-      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-XXXXXXX"); //Substitua 'GTM-XXXXXXX' pelo ID real do container.
-  </script>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- ============ SCHEMA.ORG JSON-LD (Local SEO & Rich Snippets) ============ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HealthAndBeautyBusiness",
+        "name": "Saúde Mater",
+        "url": "https://saudemater.com.br/",
+        "logo": "https://saudemater.com.br/assets/logohorizontal.webp",
+        "image": "https://saudemater.com.br/assets/Jak.webp",
+        "description": "Cartão de benefícios em saúde com consultas e exames com desconto em Belo Horizonte e Região.",
+        "telephone": "+55-31-9588-7801",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Padre Rolim, 415",
+          "addressLocality": "Belo Horizonte",
+          "addressRegion": "MG",
+          "addressCountry": "BR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -19.92794,
+          "longitude": -43.92683
+        },
+        "areaServed": "Belo Horizonte e Região Metropolitana",
+        "priceRange": "$$"
+      }
+    </script>
+
+    <!-- ============ GOOGLE TAG MANAGER (Head) ============ -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-XXXXXXX"); // Substitua 'GTM-XXXXXXX' pelo ID real do container.
+    </script>
+  </head>
   <body>
     <!-- ============ GOOGLE TAG MANAGER (Body) ============ -->
     <!-- Substitua 'GTM-XXXXXXX' pelo ID real do container -->
@@ -84,6 +144,9 @@
             src="assets/logohorizontal.webp"
             alt="Saúde Mater, Cartão de Benefícios em Saúde"
             class="logo-img"
+            width="190"
+            height="52"
+            decoding="async"
           />
         </a>
         <ul class="nav-links" id="nav-links">
@@ -150,22 +213,25 @@
 
     <main id="conteudo">
       <!-- ============ HERO ============ -->
-      <header class="hero">
+      <header class="hero" id="hero-sentinel">
         <div class="container hero-inner reveal">
           <div class="hero-text">
-            <span class="eyebrow"
-              >CARTÃO DE BENEFÍCIOS EM BH · SAÚDE MATER</span
-            >
-            <h1 class="headline">
-              Sua saúde não deveria ter
-              <span class="headline-accent">fila de espera.</span>
-            </h1>
-            <p class="lede">
-              Consulta médica de qualidade não precisa ser sinônimo de fila
-              longa e alto custo. Com o cartão Saúde Mater, você agenda
-              rápido, é atendido com atenção e paga bem menos do que no
-              particular. Sem carência, sem burocracia.
-            </p>
+            <div class="hero-copy">
+              <span class="eyebrow"
+                >CARTÃO DE BENEFÍCIOS EM BH · SAÚDE MATER</span
+              >
+              <h1 class="headline headline--long">
+                As famílias de BH já descobriram
+                <span class="headline-accent">a solução para a saúde:</span>
+                acesso, economia e cuidado de verdade.
+              </h1>
+              <p class="lede">
+                Consulta médica de qualidade não precisa ser sinônimo de fila
+                longa e alto custo. Com o cartão Saúde Mater, você agenda
+                rápido, é atendido com atenção e paga bem menos do que no
+                particular. Sem carência, sem burocracia.
+              </p>
+            </div>
             <div class="cta-row">
               <a
                 href="https://wa.me/553195887801?text=Ol%C3%A1!%20Conheci%20a%20Sa%C3%BAde%20Mater%20pelo%20site%20e%20gostaria%20de%20conhecer%20os%20planos%20e%20valores."
@@ -175,7 +241,20 @@
                 id="hero-cta"
                 >Quero conhecer os planos</a
               >
-              <a href="#diferencial" class="btn btn-ghost">Como funciona</a>
+              <!-- Botão Jak — WhatsApp Hero -->
+              <a
+                href="https://wa.me/553195887801?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20Jak%20e%20conhecer%20os%20planos%20da%20Sa%C3%BAde%20Mater!"
+                target="_blank"
+                rel="noopener"
+                class="hero-jak-cta"
+                aria-label="Fale com a Jak no WhatsApp"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+                  <path d="M12.04 2c-5.523 0-10 4.477-10 10 0 1.86.508 3.602 1.393 5.093L2 22l5.063-1.393A9.953 9.953 0 0 0 12.04 22c5.523 0 10-4.477 10-10s-4.477-10-10-10zm0 18.15a8.13 8.13 0 0 1-4.146-1.135l-.297-.177-3.006.827.826-2.93-.194-.301A8.15 8.15 0 1 1 20.19 12.15a8.156 8.156 0 0 1-8.15 8z"></path>
+                </svg>
+                Fale com a Jak no WhatsApp
+              </a>
             </div>
             <div class="hero-facts">
               <div class="hero-fact">
@@ -194,11 +273,15 @@
               </div>
             </div>
           </div>
+
           <div class="hero-image-col">
             <img
-              src="assets/Mia.png"
-              alt="Mia, mascote da Saúde Mater"
+              src="assets/Jak.webp"
+              alt="Jak, especialista da Saúde Mater"
               class="hero-chamada"
+              width="360"
+              height="420"
+              fetchpriority="high"
             />
           </div>
         </div>
@@ -479,6 +562,9 @@
                       src="assets/exames/cardiologista.webp"
                       alt="Consulta com cardiologista em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Cardiologista</span>
                   </div>
@@ -489,6 +575,9 @@
                       src="assets/exames/ginecologista.webp"
                       alt="Consulta com ginecologista em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Ginecologista</span>
                   </div>
@@ -499,6 +588,9 @@
                       src="assets/exames/dentista.webp"
                       alt="Consulta odontológica em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Odontologia</span>
                   </div>
@@ -509,6 +601,9 @@
                       src="assets/exames/checkup.webp"
                       alt="Check-up completo em BH"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Check-up Completo</span>
                   </div>
@@ -519,6 +614,9 @@
                       src="assets/exames/ultrassom.webp"
                       alt="Exame de ultrassom em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Ultrassom</span>
                   </div>
@@ -529,6 +627,9 @@
                       src="assets/exames/raiox.webp"
                       alt="Exame de raio-X em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Raio-X</span>
                   </div>
@@ -539,6 +640,9 @@
                       src="assets/exames/ressonanciamagnetica.webp"
                       alt="Ressonância magnética em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Ressonância Magnética</span>
                   </div>
@@ -549,6 +653,9 @@
                       src="assets/exames/mamografia.webp"
                       alt="Mamografia em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Mamografia</span>
                   </div>
@@ -559,6 +666,9 @@
                       src="assets/exames/colonoscopia.webp"
                       alt="Colonoscopia em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Colonoscopia</span>
                   </div>
@@ -569,6 +679,9 @@
                       src="assets/exames/laboratoriais.webp"
                       alt="Exames laboratoriais em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Exames Laboratoriais</span>
                   </div>
@@ -579,6 +692,9 @@
                       src="assets/exames/eletroencefalograma.webp"
                       alt="Eletroencefalograma em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Eletroencefalograma</span>
                   </div>
@@ -589,6 +705,9 @@
                       src="assets/exames/audiologo.webp"
                       alt="Exame de audiometria em BH com desconto"
                       loading="lazy"
+                      decoding="async"
+                      width="280"
+                      height="200"
                     />
                     <span class="gallery-label">Audiometria</span>
                   </div>
@@ -842,9 +961,12 @@
                 <div class="partners-focus-track" id="track-partners">
                   <div class="partner-focus-card partner-focus-card--clinic">
                     <img
-                      src="assets/parceiros/matermed.png"
+                      src="assets/parceiros/matermed.webp"
                       alt="Mater Med — Clínica Parceira"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -852,6 +974,9 @@
                       src="assets/parceiros/amorsaude.webp"
                       alt="Amor Saúde"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -859,6 +984,9 @@
                       src="assets/parceiros/cedus.webp"
                       alt="Cedus"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -866,6 +994,9 @@
                       src="assets/parceiros/centralcard.webp"
                       alt="Central Card"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -873,6 +1004,9 @@
                       src="assets/parceiros/clubecerto.webp"
                       alt="Clube Certo"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -880,6 +1014,9 @@
                       src="assets/parceiros/ducash.webp"
                       alt="Ducash"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -887,6 +1024,9 @@
                       src="assets/parceiros/eficacia.webp"
                       alt="Eficácia"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -894,6 +1034,9 @@
                       src="assets/parceiros/zelo.webp"
                       alt="Grupo Zelo"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -901,6 +1044,9 @@
                       src="assets/parceiros/tamarra.webp"
                       alt="Laboratório Tamarra"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -908,6 +1054,9 @@
                       src="assets/parceiros/metropax.webp"
                       alt="Metropax"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -915,6 +1064,9 @@
                       src="assets/parceiros/paguemenos.webp"
                       alt="Pague Menos"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -922,6 +1074,9 @@
                       src="assets/parceiros/prevenir.webp"
                       alt="Prevenir"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -929,6 +1084,9 @@
                       src="assets/parceiros/pulmonar.webp"
                       alt="Pulmonar"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -936,6 +1094,9 @@
                       src="assets/parceiros/santarosa.webp"
                       alt="Santa Rosa"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -943,6 +1104,9 @@
                       src="assets/parceiros/saomarcos.webp"
                       alt="São Marcos"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -950,6 +1114,9 @@
                       src="assets/parceiros/sermig.webp"
                       alt="Sermig"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                   <div class="partner-focus-card">
@@ -957,6 +1124,9 @@
                       src="assets/parceiros/unicordis.webp"
                       alt="Unicordis"
                       loading="lazy"
+                      decoding="async"
+                      width="140"
+                      height="60"
                     />
                   </div>
                 </div>
@@ -1009,21 +1179,31 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
                   Hospital: Rua Padre Rolim, 415, Santa Efigênia
                 </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+                  Cirurgias: hérnia, vesícula e muito mais
+                </li>
               </ul>
               <img
-                src="assets/parceiros/matermed.png"
+                src="assets/parceiros/matermed.webp"
                 alt="Logo Mater Med"
                 class="clinic-logo"
                 loading="lazy"
+                decoding="async"
+                width="200"
+                height="60"
               />
             </div>
 
             <!-- Foto da Fachada à Direita -->
             <div class="clinic-spotlight-img">
               <img
-                src="assets/parceiros/fachadamatermed.png"
+                src="assets/parceiros/fachadamatermed.webp"
                 alt="Fachada do Hospital Mater Med em Belo Horizonte, parceiro do Cartão Saúde Mater"
                 loading="lazy"
+                decoding="async"
+                width="600"
+                height="450"
               />
             </div>
 
@@ -1376,6 +1556,10 @@
             src="assets/logohorizontal.webp"
             alt="Saúde Mater"
             class="footer-logo"
+            width="180"
+            height="49"
+            loading="lazy"
+            decoding="async"
           />
         </div>
         <span class="footer-copy"
@@ -1392,6 +1576,6 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
