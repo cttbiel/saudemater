@@ -109,31 +109,43 @@
       }
     </script>
 
-    <!-- ============ GOOGLE TAG MANAGER (Head) ============ -->
+    <!-- ============ META PIXEL CODE ============ -->
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-XXXXXXX"); // Substitua 'GTM-XXXXXXX' pelo ID real do container.
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1578407190422655');
+      fbq('track', 'PageView');
     </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1578407190422655&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- ============ GOOGLE TAG MANAGER (Head) ============ -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NNKCSWTK');</script>
+    <!-- End Google Tag Manager -->
   </head>
   <body>
     <!-- ============ GOOGLE TAG MANAGER (Body) ============ -->
-    <!-- Substitua 'GTM-XXXXXXX' pelo ID real do container -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNKCSWTK"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
 
@@ -151,7 +163,7 @@
         </a>
         <ul class="nav-links" id="nav-links">
           <li><a href="#diferencial">Diferencial</a></li>
-          <li><a href="#beneficios">Benefícios</a></li>
+          <li><a href="#planos">Planos</a></li>
           <li><a href="#especialidades">Especialidades</a></li>
           <li><a href="#parceiros">Parceiros</a></li>
           <li><a href="#faq">Dúvidas</a></li>
@@ -234,26 +246,29 @@
             </div>
             <div class="cta-row">
               <a
-                href="https://wa.me/553195887801?text=Ol%C3%A1!%20Conheci%20a%20Sa%C3%BAde%20Mater%20pelo%20site%20e%20gostaria%20de%20conhecer%20os%20planos%20e%20valores."
-                target="_blank"
-                rel="noopener"
+                href="#planos"
                 class="btn btn-primary btn-lg"
                 id="hero-cta"
                 >Quero conhecer os planos</a
               >
-              <!-- Botão Jak — WhatsApp Hero -->
+              <!-- Botão Jak — WhatsApp Hero (Balão de Fala) -->
               <a
                 href="https://wa.me/553195887801?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20Jak%20e%20conhecer%20os%20planos%20da%20Sa%C3%BAde%20Mater!"
                 target="_blank"
                 rel="noopener"
                 class="hero-jak-cta"
-                aria-label="Fale com a Jak no WhatsApp"
+                aria-label="Olá, sou a Jak! Fale comigo no WhatsApp"
               >
-                <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
-                  <path d="M12.04 2c-5.523 0-10 4.477-10 10 0 1.86.508 3.602 1.393 5.093L2 22l5.063-1.393A9.953 9.953 0 0 0 12.04 22c5.523 0 10-4.477 10-10s-4.477-10-10-10zm0 18.15a8.13 8.13 0 0 1-4.146-1.135l-.297-.177-3.006.827.826-2.93-.194-.301A8.15 8.15 0 1 1 20.19 12.15a8.156 8.156 0 0 1-8.15 8z"></path>
-                </svg>
-                Fale com a Jak no WhatsApp
+                <span class="hero-jak-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+                    <path d="M12.04 2c-5.523 0-10 4.477-10 10 0 1.86.508 3.602 1.393 5.093L2 22l5.063-1.393A9.953 9.953 0 0 0 12.04 22c5.523 0 10-4.477 10-10s-4.477-10-10-10zm0 18.15a8.13 8.13 0 0 1-4.146-1.135l-.297-.177-3.006.827.826-2.93-.194-.301A8.15 8.15 0 1 1 20.19 12.15a8.156 8.156 0 0 1-8.15 8z"></path>
+                  </svg>
+                </span>
+                <span class="hero-jak-content">
+                  <span class="hero-jak-bubble-sub">Olá, sou a Jak!</span>
+                  <span class="hero-jak-bubble-main">Fale comigo no WhatsApp</span>
+                </span>
               </a>
             </div>
             <div class="hero-facts">
@@ -421,7 +436,7 @@
       </section>
 
       <!-- ============ NOSSOS PLANOS ============ -->
-      <section class="section section--navy" id="beneficios">
+      <section class="section section--navy" id="planos">
         <div class="container reveal">
           <span class="eyebrow">NOSSOS PLANOS</span>
           <h2 class="section-title section-title--light">

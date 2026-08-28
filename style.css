@@ -183,7 +183,10 @@ button:focus-visible {
 }
 .section-lede--light { color: var(--muted-on-navy); }
 
-.section { padding-block: clamp(3.5rem, 7vw, 6rem); }
+.section {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  scroll-margin-top: calc(var(--nav-h) + 12px);
+}
 .section--navy { background: var(--navy); }
 
 .fine-print {
@@ -382,30 +385,85 @@ button:focus-visible {
   font-size: clamp(1.65rem, 3.2vw, 2.45rem);
 }
 
-/* Botão Jak / WhatsApp no hero */
+/* Botão Jak / WhatsApp no hero — Balão de Fala da Jak */
 .hero-jak-cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  padding: 0.95rem 1.6rem;
+  gap: 0.75rem;
+  padding: 0.65rem 1.45rem 0.65rem 1.1rem;
   background: #25d366;
   color: var(--white);
-  font-weight: 800;
-  font-size: 0.95rem;
   border-radius: 100px;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35), 0 0 15px rgba(37, 211, 102, 0.15);
   text-decoration: none;
-  white-space: nowrap;
   transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+/* Pontinha do balão apontando para a personagem Jak (à direita) */
+.hero-jak-cta::after {
+  content: "";
+  position: absolute;
+  right: -9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 0 7px 10px;
+  border-color: transparent transparent transparent #25d366;
+  transition: border-color 0.2s ease;
 }
 .hero-jak-cta:hover {
   background: #22c05e;
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.48), 0 0 20px rgba(37, 211, 102, 0.25);
 }
-.hero-jak-cta:active { transform: translateY(0); }
-.hero-jak-cta svg { width: 19px; height: 19px; flex-shrink: 0; }
+.hero-jak-cta:hover::after {
+  border-left-color: #22c05e;
+}
+.hero-jak-cta:active {
+  transform: translateY(0);
+}
+/* Ícone do WhatsApp dentro do balão */
+.hero-jak-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.hero-jak-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--white);
+  flex-shrink: 0;
+}
+/* Conteúdo de texto em 2 linhas */
+.hero-jak-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1.15;
+}
+.hero-jak-bubble-sub {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.01em;
+  margin-bottom: 2px;
+}
+.hero-jak-bubble-main {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--white);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
 
 
 /* Hero social proof badge */
@@ -1678,7 +1736,17 @@ button:focus-visible {
     align-self: flex-end;
     padding-bottom: 0.25rem;
   }
+  .cta-row .hero-jak-cta {
+    order: 1;
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 0.6rem 0.8rem 0.6rem 0.65rem;
+    gap: 0.55rem;
+    border-radius: 100px;
+  }
   .cta-row #hero-cta {
+    order: 2;
     width: 100%;
     justify-content: center;
     text-align: center;
@@ -1687,14 +1755,26 @@ button:focus-visible {
     white-space: normal;
     line-height: 1.25;
   }
-  .cta-row .hero-jak-cta {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    font-size: 0.84rem;
-    padding: 0.85rem 0.9rem;
+  .cta-row .hero-jak-cta .hero-jak-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .cta-row .hero-jak-cta .hero-jak-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+  .cta-row .hero-jak-cta .hero-jak-bubble-sub {
+    font-size: 0.68rem;
+    margin-bottom: 1px;
+  }
+  .cta-row .hero-jak-cta .hero-jak-bubble-main {
+    font-size: 0.82rem;
     white-space: normal;
-    line-height: 1.25;
+    line-height: 1.15;
+  }
+  .cta-row .hero-jak-cta::after {
+    right: -7px;
+    border-width: 5px 0 5px 8px;
   }
   .hero-image-col {
     grid-area: jak;
@@ -1716,20 +1796,36 @@ button:focus-visible {
   .hero-facts {
     grid-area: facts;
     justify-self: center;
-    width: fit-content;
-    max-width: 100%;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     margin-top: 0.85rem;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 0.6rem;
     border-radius: 12px;
   }
   .hero-fact {
-    padding-inline: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-inline: 0.35rem;
+    flex: 1;
   }
+  .hero-fact:first-child { padding-left: 0.35rem; }
+  .hero-fact:last-child { padding-right: 0.35rem; }
   .hero-fact-value {
     font-size: 1.15rem;
+    line-height: 1.1;
   }
   .hero-fact-label {
     font-size: 0.68rem;
+    text-align: center;
+  }
+  .hero-fact-divider {
+    height: 28px;
   }
 
   .carousel-slide { flex: 0 0 calc(50% - 0.55rem); }
@@ -1746,33 +1842,53 @@ button:focus-visible {
   .cta-row {
     gap: 0.5rem;
   }
+  .cta-row .hero-jak-cta {
+    order: 1;
+    padding: 0.48rem 0.6rem 0.48rem 0.45rem;
+    gap: 0.4rem;
+    border-radius: 100px;
+  }
   .cta-row #hero-cta {
+    order: 2;
     font-size: 0.8rem;
     padding: 0.75rem 0.5rem;
   }
-  .cta-row .hero-jak-cta {
-    font-size: 0.76rem;
-    padding: 0.75rem 0.5rem;
-    gap: 0.35rem;
+  .cta-row .hero-jak-cta .hero-jak-icon {
+    width: 24px;
+    height: 24px;
   }
-  .cta-row .hero-jak-cta svg {
-    width: 15px;
-    height: 15px;
+  .cta-row .hero-jak-cta .hero-jak-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  .cta-row .hero-jak-cta .hero-jak-bubble-sub {
+    font-size: 0.62rem;
+  }
+  .cta-row .hero-jak-cta .hero-jak-bubble-main {
+    font-size: 0.72rem;
+  }
+  .cta-row .hero-jak-cta::after {
+    right: -5px;
+    border-width: 4px 0 4px 6px;
   }
   .hero-chamada {
     max-width: 105px;
   }
   .hero-facts {
-    padding: 0.6rem 0.7rem;
+    padding: 0.6rem 0.45rem;
+    max-width: 100%;
   }
   .hero-fact {
-    padding-inline: 0.35rem;
+    padding-inline: 0.2rem;
   }
   .hero-fact-value {
-    font-size: 1rem;
+    font-size: 0.98rem;
   }
   .hero-fact-label {
     font-size: 0.6rem;
+  }
+  .hero-fact-divider {
+    height: 22px;
   }
   .carousel-slide { flex: 0 0 calc(100% - 0rem); }
   .partner-logo { flex: 0 0 calc(50% - 0.75rem); }
