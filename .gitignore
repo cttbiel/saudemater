@@ -1,5 +1,8 @@
 # Pasta de backups locais — não envia ao GitHub
 Backup/
+_backup_originals/
+assets/_backup_originals/
+indicadores/
 
 # Arquivos de sistema
 .DS_Store
@@ -11,5 +14,6 @@ desktop.ini
 .idea/
 *.sublime-workspace
 
-# Logs
+# Logs e temporários
 *.log
+scratch/

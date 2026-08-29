@@ -3,27 +3,22 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // ---- WhatsApp Float: Controle dinâmico de visibilidade ----
-// Enquanto o botão de WhatsApp da Jak / Hero estiver visível na tela, o botão flutuante fica oculto.
-// Quando o usuário rola para baixo (sai da dobra do hero), o botão flutuante aparece suavemente.
+// Usa IntersectionObserver passivo para evitar forced reflow (getBoundingClientRect removido).
+// Quando o hero sai da viewport, o botão flutuante aparece suavemente.
 (function initWhatsAppFloatVisibility() {
   const floatBtn = document.querySelector(".whatsapp-float");
   const heroSection = document.getElementById("hero-sentinel") || document.querySelector(".hero");
   if (!floatBtn || !heroSection) return;
 
-  function checkVisibility() {
-    const rect = heroSection.getBoundingClientRect();
-    const isHeroActive = rect.bottom > 100;
-    if (isHeroActive) {
-      floatBtn.classList.remove("is-visible");
-    } else {
-      floatBtn.classList.add("is-visible");
-    }
-  }
-
-  window.addEventListener("scroll", checkVisibility, { passive: true });
-  window.addEventListener("resize", checkVisibility, { passive: true });
-  // Verificação inicial
-  checkVisibility();
+  // rootMargin: dispara quando o bottom do hero passa de 100px acima do topo da viewport
+  const observer = new IntersectionObserver(
+    function(entries) {
+      const isHeroActive = entries[0].isIntersecting;
+      floatBtn.classList.toggle("is-visible", !isHeroActive);
+    },
+    { root: null, rootMargin: "-100px 0px 0px 0px", threshold: 0 }
+  );
+  observer.observe(heroSection);
 })();
 
 // ---- Hero: imagem da Jak (WebP sem fundo) ----
@@ -248,8 +243,8 @@ function createInfiniteCarousel({
       track.style.transition = `transform ${transitionMs}ms cubic-bezier(0.4, 0, 0.2, 1)`;
     } else {
       track.style.transition = "none";
-      // Força reflow para garantir que a transição não aconteça
-      void track.getBoundingClientRect();
+      // Força flush do estilo sem triggar reflow de layout completo
+      void track.offsetWidth;
     }
 
     track.style.transform = `translateX(-${offset}px)`;
